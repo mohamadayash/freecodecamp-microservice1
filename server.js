@@ -47,7 +47,10 @@ function result(res,date_string){
     if (date_string==null){
       date = new Date();
     }else{
-      date = new Date(date_string);
+      if (!isNaN(date_string))
+        date = new Date(parseInt(date_string)*1000);
+      else
+        date = new Date(date_string);
     }
     var unix =  date.getTime();
     var utc = date.toUTCString();
